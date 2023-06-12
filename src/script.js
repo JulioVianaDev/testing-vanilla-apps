@@ -33,6 +33,7 @@ function preencher() {
   document.getElementById('desc-anime').value = '';
 }
 function deleteItem(uuid) {
+    
     const tr = document.querySelector(`#tbody tr td:first-child:contains(${uuid})`).parentNode;
     if (tr) {
       tr.remove();
