@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^22.1.0",
+    "regenerator-runtime": "^0.13.11"
+  }
 }
