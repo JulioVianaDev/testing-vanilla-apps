@@ -93,9 +93,10 @@ describe('User events things', () => {
         nome.value = "digitei algo de novo"
         desc.value = "opa segunda tentativa"
         fireEvent.click(button)
+        const lastTr = qtdTrs[qtdTrs.length - 1]; 
+        const buttonDelete = lastTr.querySelector('.buttonDelete'); 
         qtdTrs = container.querySelectorAll('#tbody tr')
-        let secondButton = container.querySelectorAll('#tbody tr').lastChild
-        console.log(secondButton)
+        console.log(buttonDelete)
         expect(qtdTrs.length).toBe(1)
     })
   })
