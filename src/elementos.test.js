@@ -21,7 +21,9 @@ describe('index.html', () => {
   })
 
   it('renders a heading element', () => {
-    expect(container.querySelector('h1')).not.toBeNull()
-    expect(getByText(container, 'Testando Apps')).toBeInTheDocument()
+    let h1Element = container.querySelector('h1')
+    expect(h1Element).not.toBeNull()
+    let textH1Element = getByText(container,'Testando Apps')
+    expect(textH1Element).toBeInTheDocument()
   })
 })
