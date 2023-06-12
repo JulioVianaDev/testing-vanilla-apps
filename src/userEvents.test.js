@@ -95,8 +95,7 @@ describe('User events things', () => {
         fireEvent.click(button)
         const lastTr = qtdTrs[qtdTrs.length - 1]; 
         const buttonDelete = lastTr.querySelector('.buttonDelete'); 
-        qtdTrs = container.querySelectorAll('#tbody tr')
-        console.log(buttonDelete)
+        qtdTrs = container.querySelectorAll('#tbody tr');
         expect(qtdTrs.length).toBe(1)
     })
   })
