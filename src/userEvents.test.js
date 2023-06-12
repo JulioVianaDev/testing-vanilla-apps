@@ -82,6 +82,21 @@ describe('User events things', () => {
       })
   })
   describe('deleting one item',()=>{
-
+    it('when clicked on delete button check the length of tr',()=>{
+        const button = getByText(container, 'Clique aqui!');
+        const nome = getByTestId(container, 'nome-anime');
+        const desc = getByTestId(container, 'desc-anime');
+        nome.value = "digitei algo"
+        desc.value = "opa"
+        fireEvent.click(button)
+        let qtdTrs = container.querySelectorAll('#tbody tr')
+        nome.value = "digitei algo de novo"
+        desc.value = "opa segunda tentativa"
+        fireEvent.click(button)
+        qtdTrs = container.querySelectorAll('#tbody tr')
+        let secondButton = container.querySelectorAll('#tbody tr').lastChild
+        console.log(secondButton)
+        expect(qtdTrs.length).toBe(1)
+    })
   })
 })
