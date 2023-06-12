@@ -20,21 +20,15 @@ function generateUUID() {
 }
 
 function preencher() {
-    const tbody = document.getElementById('tbody');
-    const nomeValue = document.getElementById('nome-anime').value;
-    const descValue = document.getElementById('desc-anime').value;
-    idAtual = generateUUID();
-    if (nomeValue === '' || descValue === '') {
-        alert('Nome ou descrição estão vazios');
-        return;
-    }
-    tbody.innerHTML += `
-        <tr>
-            <td>${idAtual}</td>
-            <td>${nomeValue}</td>
-            <td>${descValue}</td>
-        </tr>
-    `;
-    document.getElementById('nome-anime').value = '';
-    document.getElementById('desc-anime').value = '';
+  const tbody = document.getElementById('tbody');
+  const nomeValue = document.getElementById('nome-anime').value;
+  const descValue = document.getElementById('desc-anime').value;
+  idAtual = generateUUID();
+  if (nomeValue === '' || descValue === '') {
+    alert('Nome ou descrição estão vazios');
+    return;
+  }
+  tbody.innerHTML += `<tr><td>${idAtual}</td><td>${nomeValue}</td><td>${descValue}</td><td><button onclick="deleteItem()">Deletar este anime</button></td></tr>`;
+  document.getElementById('nome-anime').value = '';
+  document.getElementById('desc-anime').value = '';
 }

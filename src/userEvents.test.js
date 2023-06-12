@@ -64,7 +64,7 @@ describe('User events things', () => {
         fireEvent.click(button)
         
         let qtdTrs = container.querySelectorAll('#tbody tr')
-        expect(qtdTrs[0].lastChild.innerHTML).toBe("opa")
+        expect(qtdTrs[0].children[2].innerHTML).toBe("opa")
         expect(qtdTrs[0].children[1].innerHTML).toBe("digitei algo")
       })
     
@@ -82,6 +82,6 @@ describe('User events things', () => {
       })
   })
   describe('deleting one item',()=>{
-    
+
   })
 })
