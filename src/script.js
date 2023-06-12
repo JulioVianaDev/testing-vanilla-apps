@@ -32,3 +32,6 @@ function preencher() {
   document.getElementById('nome-anime').value = '';
   document.getElementById('desc-anime').value = '';
 }
+function deleteItem(uuid){
+    
+}

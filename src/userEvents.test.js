@@ -81,7 +81,7 @@ describe('User events things', () => {
         expect(desc.value).toBe('')
       })
   })
-  describe('deleting one item',()=>{
+  describe('deleting the last item',()=>{
     it('when clicked on delete button check the length of tr',()=>{
         const button = getByText(container, 'Clique aqui!');
         const nome = getByTestId(container, 'nome-anime');
@@ -95,6 +95,7 @@ describe('User events things', () => {
         fireEvent.click(button)
         const lastTr = qtdTrs[qtdTrs.length - 1]; 
         const buttonDelete = lastTr.querySelector('.buttonDelete'); 
+        fireEvent.click(buttonDelete);
         qtdTrs = container.querySelectorAll('#tbody tr');
         expect(qtdTrs.length).toBe(1)
     })
