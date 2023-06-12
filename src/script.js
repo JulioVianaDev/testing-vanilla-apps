@@ -28,7 +28,7 @@ function preencher() {
     alert('Nome ou descrição estão vazios');
     return;
   }
-  tbody.innerHTML += `<tr><td>${idAtual}</td><td>${nomeValue}</td><td>${descValue}</td><td><button onclick="deleteItem()">Deletar este anime</button></td></tr>`;
+  tbody.innerHTML += `<tr><td>${idAtual}</td><td>${nomeValue}</td><td>${descValue}</td><td><button onclick="deleteItem('${idAtual}')">Deletar este anime</button></td></tr>`;
   document.getElementById('nome-anime').value = '';
   document.getElementById('desc-anime').value = '';
 }
