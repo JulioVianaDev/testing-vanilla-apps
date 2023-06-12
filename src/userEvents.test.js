@@ -65,6 +65,7 @@ describe('Inputs things', () => {
     
     let qtdTrs = container.querySelectorAll('#tbody tr')
     expect(qtdTrs[0].lastChild.innerHTML).toBe("opa")
+    expect(qtdTrs[0].children[1].innerHTML).toBe("digitei algo")
   })
 
   it('check if after i click in button reset the values',async()=>{
