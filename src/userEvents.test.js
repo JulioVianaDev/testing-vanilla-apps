@@ -6,6 +6,8 @@ import path from 'path'
 
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 
+const script = fs.readFileSync(path.resolve(__dirname, './script.js'), 'utf8');
+
 let dom
 let container
 
@@ -18,6 +20,8 @@ describe('index.html', () => {
     };
     dom = new JSDOM(html,options)
     container = dom.window.document.body
+    
+    dom.window.eval(script);
   })
 
   it('renders a new paragraph via JavaScript when the button is clicked', async () => {
