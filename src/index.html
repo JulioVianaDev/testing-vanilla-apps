@@ -7,8 +7,24 @@
 </head>
 <body>
     <h1>Testando Apps</h1>
+    <button id="form-button" onclick="preencher()">Clique aqui!</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>EP</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            
+        </tbody>
+    </table>
     <script>
-        
+        function preencher() {
+            const button = document.getElementById("form-button");
+            const tbody = document.getElementById('tbody');
+            tbody.innerHTML+= `<tr><td>One Piece</td><td>1100</td></tr>`
+        }
     </script>
 </body>
 </html>
