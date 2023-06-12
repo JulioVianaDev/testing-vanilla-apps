@@ -11,7 +11,7 @@ const script = fs.readFileSync(path.resolve(__dirname, './script.js'), 'utf8');
 let dom
 let container
 
-describe('Inputs things', () => {
+describe('User events things', () => {
   beforeEach(() => {
     // https://github.com/jsdom/jsdom#executing-scripts
     const options = {
@@ -23,61 +23,63 @@ describe('Inputs things', () => {
     
     dom.window.eval(script);
   })
-
-  it('check if the input sum new things', async () => {
-    const button = getByText(container, 'Clique aqui!');
-    const nome = getByTestId(container, 'nome-anime');
-    const desc = getByTestId(container, 'desc-anime');
-
-    nome.value = "digitei algo"
-    desc.value = "opa"
+  describe('input checks',()=>{
+    it('check if the input sum new things', async () => {
+        const button = getByText(container, 'Clique aqui!');
+        const nome = getByTestId(container, 'nome-anime');
+        const desc = getByTestId(container, 'desc-anime');
     
-    fireEvent.click(button)
-
-    let qtdTrs = container.querySelectorAll('#tbody tr')
-    expect(qtdTrs.length).toBe(1)
+        nome.value = "digitei algo"
+        desc.value = "opa"
+        
+        fireEvent.click(button)
     
-    nome.value = "digitei algo de novo"
-    desc.value = "opa segunda tentativa"
-    fireEvent.click(button)
+        let qtdTrs = container.querySelectorAll('#tbody tr')
+        expect(qtdTrs.length).toBe(1)
+        
+        nome.value = "digitei algo de novo"
+        desc.value = "opa segunda tentativa"
+        fireEvent.click(button)
+        
+        qtdTrs = container.querySelectorAll('#tbody tr')
+        expect(qtdTrs.length).toBe(2)
+        
+        nome.value = "digitei algo de novo again"
+        desc.value = "opa terceira tentativa"
+        fireEvent.click(button)
+        
+        qtdTrs = container.querySelectorAll('#tbody tr')
+        expect(qtdTrs.length).toBe(3)
+      })
+      
     
-    qtdTrs = container.querySelectorAll('#tbody tr')
-    expect(qtdTrs.length).toBe(2)
+      it('check if the have values correctly', async () => {
+        const button = getByText(container, 'Clique aqui!');
+        const nome = getByTestId(container, 'nome-anime');
+        const desc = getByTestId(container, 'desc-anime');
     
-    nome.value = "digitei algo de novo again"
-    desc.value = "opa terceira tentativa"
-    fireEvent.click(button)
+        nome.value = "digitei algo"
+        desc.value = "opa"
+        
+        fireEvent.click(button)
+        
+        let qtdTrs = container.querySelectorAll('#tbody tr')
+        expect(qtdTrs[0].lastChild.innerHTML).toBe("opa")
+        expect(qtdTrs[0].children[1].innerHTML).toBe("digitei algo")
+      })
     
-    qtdTrs = container.querySelectorAll('#tbody tr')
-    expect(qtdTrs.length).toBe(3)
+      it('check if after i click in button reset the values',async()=>{
+        const button = getByText(container, 'Clique aqui!');
+        const nome = getByTestId(container, 'nome-anime');
+        const desc = getByTestId(container, 'desc-anime');
+    
+        nome.value = "digitei algo"
+        desc.value = "opa"
+        
+        fireEvent.click(button)
+        expect(nome.value).toBe('')
+        expect(desc.value).toBe('')
+      })
   })
   
-
-  it('check if the have values correctly', async () => {
-    const button = getByText(container, 'Clique aqui!');
-    const nome = getByTestId(container, 'nome-anime');
-    const desc = getByTestId(container, 'desc-anime');
-
-    nome.value = "digitei algo"
-    desc.value = "opa"
-    
-    fireEvent.click(button)
-    
-    let qtdTrs = container.querySelectorAll('#tbody tr')
-    expect(qtdTrs[0].lastChild.innerHTML).toBe("opa")
-    expect(qtdTrs[0].children[1].innerHTML).toBe("digitei algo")
-  })
-
-  it('check if after i click in button reset the values',async()=>{
-    const button = getByText(container, 'Clique aqui!');
-    const nome = getByTestId(container, 'nome-anime');
-    const desc = getByTestId(container, 'desc-anime');
-
-    nome.value = "digitei algo"
-    desc.value = "opa"
-    
-    fireEvent.click(button)
-    expect(nome.value).toBe('')
-    expect(desc.value).toBe('')
-  })
 })
