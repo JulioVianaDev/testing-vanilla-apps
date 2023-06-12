@@ -1,4 +1,4 @@
-import { fireEvent, getByText } from '@testing-library/dom'
+import { fireEvent, getByText,getByTestId } from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
 import fs from 'fs'
@@ -25,18 +25,14 @@ describe('index.html', () => {
   })
 
   it('renders a new paragraph via JavaScript when the button is clicked', async () => {
-    const button = getByText(container, 'Clique aqui!')
-    
+    const button = getByText(container, 'Clique aqui!');
+    const nome = getByTestId(container, 'nome-anime');
+    const desc = getByTestId(container, 'desc-anime');
+    nome.value = "digitei algo"
+    desc.value = "opa"
     fireEvent.click(button)
     let generatedParagraphs = container.querySelectorAll('#tbody tr')
     expect(generatedParagraphs.length).toBe(1)
-
-    fireEvent.click(button)
-    generatedParagraphs = container.querySelectorAll('#tbody tr')
-    expect(generatedParagraphs.length).toBe(2)
-
-    fireEvent.click(button)
-    generatedParagraphs = container.querySelectorAll('#tbody tr')
-    expect(generatedParagraphs.length).toBe(3)
+    expect(generatedParagraphs[0].lastChild.innerHTML).toBe("opa")
   })
 })

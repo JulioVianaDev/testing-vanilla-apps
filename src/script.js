@@ -1,4 +1,6 @@
 function preencher() {
     const tbody = document.getElementById('tbody');
-    tbody.innerHTML+= `<tr><td>One Piece</td><td>1100</td></tr>`
+    const nomeValue = document.getElementById('nome-anime').value;
+    const descValue = document.getElementById('desc-anime').value;
+    tbody.innerHTML+= `<tr><td>${nomeValue}</td><td>${descValue}</td></tr>`
 }
