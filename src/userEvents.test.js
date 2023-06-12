@@ -28,19 +28,26 @@ describe('Inputs things', () => {
     const button = getByText(container, 'Clique aqui!');
     const nome = getByTestId(container, 'nome-anime');
     const desc = getByTestId(container, 'desc-anime');
+
     nome.value = "digitei algo"
     desc.value = "opa"
+    
     fireEvent.click(button)
+
     let qtdTrs = container.querySelectorAll('#tbody tr')
     expect(qtdTrs.length).toBe(1)
+    
     nome.value = "digitei algo de novo"
     desc.value = "opa segunda tentativa"
     fireEvent.click(button)
+    
     qtdTrs = container.querySelectorAll('#tbody tr')
     expect(qtdTrs.length).toBe(2)
+    
     nome.value = "digitei algo de novo again"
     desc.value = "opa terceira tentativa"
     fireEvent.click(button)
+    
     qtdTrs = container.querySelectorAll('#tbody tr')
     expect(qtdTrs.length).toBe(3)
   })
@@ -50,10 +57,26 @@ describe('Inputs things', () => {
     const button = getByText(container, 'Clique aqui!');
     const nome = getByTestId(container, 'nome-anime');
     const desc = getByTestId(container, 'desc-anime');
+
     nome.value = "digitei algo"
     desc.value = "opa"
+    
     fireEvent.click(button)
-    let generatedParagraphs = container.querySelectorAll('#tbody tr')
-    expect(generatedParagraphs[0].lastChild.innerHTML).toBe("opa")
+    
+    let qtdTrs = container.querySelectorAll('#tbody tr')
+    expect(qtdTrs[0].lastChild.innerHTML).toBe("opa")
+  })
+
+  it('check if after i click in button reset the values',async()=>{
+    const button = getByText(container, 'Clique aqui!');
+    const nome = getByTestId(container, 'nome-anime');
+    const desc = getByTestId(container, 'desc-anime');
+
+    nome.value = "digitei algo"
+    desc.value = "opa"
+    
+    fireEvent.click(button)
+    expect(nome.value).toBe('')
+    expect(desc.value).toBe('')
   })
 })
