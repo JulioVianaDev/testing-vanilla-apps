@@ -81,5 +81,7 @@ describe('User events things', () => {
         expect(desc.value).toBe('')
       })
   })
-  
+  describe('deleting one item',()=>{
+    
+  })
 })
