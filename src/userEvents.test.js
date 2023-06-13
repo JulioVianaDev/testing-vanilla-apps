@@ -100,4 +100,35 @@ describe('User events things', () => {
         expect(qtdTrs.length).toBe(1)
     })
   })
+  describe('creating 3 tags delete the first and check if the others were kept',()=>{
+    it('creating the 3 and delete',()=>{
+      const button = getByText(container, 'Clique aqui!');
+      const nome = getByTestId(container, 'nome-anime');
+      const desc = getByTestId(container, 'desc-anime');
+      nome.value = "Mashle"
+      desc.value = "Saitama no universo do harry potter"
+      fireEvent.click(button)
+      nome.value = "One Piece"
+      desc.value = "Melhor anime do mundo!"
+      fireEvent.click(button)
+      nome.value = "Vinland Saga"
+      desc.value = "Um garoto viking em busca de sua honra"
+      fireEvent.click(button)
+      let qtdTrs = container.querySelectorAll('#tbody tr');
+      expect(qtdTrs.length).toBe(3);
+      let firstItem = qtdTrs[0];
+      let buttonDeleteFirst = firstItem.querySelector('.buttonDelete');
+      fireEvent.click(buttonDeleteFirst);
+      qtdTrs = container.querySelectorAll('#tbody tr');
+      expect(qtdTrs.length).toBe(2);
+      let newFirstItem = qtdTrs[0];
+      let nomeCampo = newFirstItem.querySelector('.nomeCampo');
+      let descCampo = newFirstItem.querySelector('.descCampo');
+      let textoNomeCampo = nomeCampo.textContent
+      let textoDescCampo = descCampo.textContent
+      expect(textoNomeCampo).toBe('One Piece')
+      expect(textoDescCampo).toBe('Melhor anime do mundo!')
+      
+    })
+  })
 })
