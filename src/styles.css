@@ -40,7 +40,13 @@ body{
 #table-container {
     height: 300px; /* Set the desired height */
     overflow-y: scroll; /* Enable vertical scrolling */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
 }
+
 tr{
     height: 30px;
 }
