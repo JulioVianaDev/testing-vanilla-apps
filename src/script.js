@@ -33,9 +33,11 @@ function preencher() {
   document.getElementById('desc-anime').value = '';
 }
 function deleteItem(uuid) {
-    
-    const tr = document.querySelector(`#tbody tr td:first-child:contains(${uuid})`).parentNode;
-    if (tr) {
-      tr.remove();
+  const rows = document.querySelectorAll('#tbody tr');
+  rows.forEach((row) => {
+    const idCell = row.querySelector('td:first-child');
+    if (idCell.textContent === uuid) {
+      row.remove();
     }
-  }
+  });
+}
