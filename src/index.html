@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Testando Apps</h1>
-    <input data-testid="nome-anime" type="text" id="nome-anime"/>
-    <input data-testid="desc-anime" type="text" id="desc-anime"/>
-    <button id="form-button" onclick="preencher()">Clique aqui!</button>
-    <table>
-        <thead>
+    <h1 id="titleApp">Testando Apps</h1>
+    <div class="form">
+        <h1 class="subtitles">Nome</h1>
+        <input data-testid="nome-anime" type="text" id="nome-anime"/>
+        <h1 class="subtitles">Descrição</h1>
+        <input data-testid="desc-anime" type="text" id="desc-anime"/>
+        <button id="form-button" onclick="preencher()">Clique aqui!</button>
+    </div>
+    <div id="table-container">
+        <table >
+            <thead>
             <tr>
                 <th>Criação</th>
                 <th>Nome</th>
@@ -21,7 +27,8 @@
         <tbody id="tbody">
             
         </tbody>
-    </table>
+        </table>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>
