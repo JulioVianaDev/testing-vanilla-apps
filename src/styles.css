@@ -88,3 +88,9 @@ tbody{
 td{
     width: 25%;
 }
+.buttonDelete{
+    background-color: red;
+    color: white;
+    height: 25px;
+    border-radius: 12px;
+}
