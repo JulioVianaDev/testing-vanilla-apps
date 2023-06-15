@@ -28,7 +28,20 @@ function preencher() {
     alert('Nome ou descrição estão vazios');
     return;
   }
-  tbody.innerHTML += `<tr><td>${idAtual}</td><td class="nomeCampo">${nomeValue}</td><td class="descCampo">${descValue}</td><td><button class="buttonDelete" onclick="deleteItem('${idAtual}')">Deletar este anime</button></td></tr>`;
+  const tableRow =` <tr>
+                      <td>${idAtual}</td>
+                      <td class="nomeCampo">${nomeValue}</td>
+                      <td class="descCampo">${descValue}</td>
+                      <td>
+                        <button 
+                          class="buttonDelete" 
+                          onclick="deleteItem('${idAtual}')"
+                        >
+                          Deletar este anime
+                        </button>
+                      </td>
+                    </tr>`; 
+  tbody.innerHTML += tableRow
   document.getElementById('nome-anime').value = '';
   document.getElementById('desc-anime').value = '';
 }
